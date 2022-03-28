@@ -67,3 +67,24 @@ def get_today_results_per_5min():
 
 
 TEPCO_CSV_TEXT = get_tepco_csv_text()
+
+
+if __name__ == '__main__':
+
+    data_type_pairs = [
+        ('peak_period_supply', get_peak_period_supply),
+        ('expected_maximum_power', get_expected_maximum_power),
+        ('usage_peak_period_supply', get_usage_peak_period_supply),
+        ('usage_peak_period_expected_power', get_usage_peak_period_expected_power),
+        ('daily_results_hourly', get_daily_results_hourly),
+        ('maximum_usage', get_maximum_usage),
+        ('peak_period_suppy_tomorrow', get_peak_period_suppy_tomorrow),
+        ('expected_maximum_power_tomorrow', get_expected_maximum_power_tomorrow),
+        ('usage_peak_period_supply_tomorrow', get_usage_peak_period_supply_tomorrow),
+        ('usage_peak_period_expected_power_tomorrow', get_usage_peak_period_expected_power_tomorrow),
+        ('today_results_per_5min', get_today_results_per_5min),
+    ]
+
+    for data_type, get_data in data_type_pairs:
+        data = get_data()
+        data.to_json(f'api/{data_type}.json', indent=2, force_ascii=False)
