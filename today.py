@@ -87,4 +87,4 @@ if __name__ == '__main__':
 
     for data_type, get_data in data_type_pairs:
         data = get_data()
-        data.to_json(f'api/{data_type}.json', indent=2, force_ascii=False)
+        data.to_json(f'public/api/{data_type}.json', indent=2, force_ascii=False)
