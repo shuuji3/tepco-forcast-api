@@ -5,8 +5,6 @@ setup:
 	poetry install
 	poetry shell
 
-generate-index-html:
-	./generate-index-html.bash > public/index.html
-
 update-today-data:
+	./generate-index-html.bash > public/index.html
 	python today.py

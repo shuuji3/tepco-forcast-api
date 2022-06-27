@@ -5,7 +5,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  schedule:
+    - cron: '1 * * * *'
 
 jobs:
   deploy:
@@ -17,7 +18,8 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
+      - run: make setup
+      - run: make update-today-data
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
