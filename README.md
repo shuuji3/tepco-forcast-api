@@ -4,6 +4,8 @@
 ## Example
 
 ```py
+> ipython
+
 In [1]: df=pd.read_json('http://shuuji3.xyz/tepco-forecast-api/api/today_results_per_5min.json')
 
 In [2]: df[df['当日実績(５分間隔値)(万kW)'].isna() == False]
